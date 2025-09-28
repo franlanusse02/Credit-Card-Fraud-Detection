@@ -1,0 +1,114 @@
+Credit Card Fraud Detection
+
+This project demonstrates a fraud detection pipeline using credit card transactions. It combines real transaction patterns with simulated customer, card, and merchant data to create a realistic dataset suitable for machine learning experiments.
+
+Project Structure
+Credit Card Fraud Detection/
+├── modules/
+│   ├── main.py                   # Fraud detection pipeline
+│   ├── data_mapping_and_loading.py  # Generate and map simulated data
+│   └── exploration.py            # Optional EDA scripts
+├── downloads/
+│   └── creditcard.csv            # Original transaction dataset
+├── README.md
+└── requirements.txt
+
+Dataset Overview
+
+The dataset used in this project is partially real and partially simulated:
+
+Transaction Data: Based on a real credit card transactions dataset (creditcard.csv). Includes anonymized features (V1–V28) and the transaction amount.
+
+Simulated Customers: Generated using Faker. Each customer has a customer_id, gender, age_group, and country.
+
+Simulated Cards: Each card has a card_id, card_type, bank, and is mapped to a customer.
+
+Simulated Merchants: Each merchant has a merchant_id, category, and region.
+
+Liberties Taken
+
+To make the dataset usable for modeling:
+
+Customer and merchant information is simulated: Names, countries, and regions are randomly assigned to provide realistic associations.
+
+Card ownership is randomly assigned: Customers can have 1–3 cards.
+
+Transaction mapping: Each transaction is mapped to a customer, a card, and a merchant.
+
+International transaction flag: A binary feature is_international is added based on whether the customer’s country matches the merchant region (~10% of transactions are international).
+
+Constraints:
+
+Customers have 1–3 cards.
+
+Transactions mostly occur in the customer’s country (90%), with a minority being international.
+
+Cards are unique to customers; no shared cards between multiple customers.
+
+These steps provide a dataset suitable for training, testing, and evaluating machine learning models for fraud detection.
+
+Fraud Detection Pipeline
+
+The pipeline is implemented in main.py:
+
+Connects to the Neon Postgres database to pull transaction, customer, and merchant data.
+
+Performs feature engineering:
+
+Adds is_international.
+
+Scales numeric features (amount).
+
+Splits data into training and testing sets using stratification to preserve class distribution.
+
+Fits a baseline Logistic Regression with class_weight='balanced' to account for fraud imbalance.
+
+Evaluates the model:
+
+Classification report
+
+ROC-AUC score
+
+Confusion matrix visualization
+
+Dependencies
+pandas
+numpy
+sqlalchemy
+psycopg2
+scikit-learn
+matplotlib
+seaborn
+faker
+
+
+Install with:
+
+pip install -r requirements.txt
+
+Database Connection
+
+The pipeline uses Neon Postgres for storage.
+
+Connection string format:
+
+postgresql://<username>:<password>@<host>/<database>?sslmode=require&channel_binding=require
+
+
+Replace the placeholders with your Neon credentials.
+
+Notes
+
+The dataset is not fully real, only transaction patterns come from a real source.
+
+The simulation is designed to be statistically plausible, but does not represent real individuals or merchants.
+
+All data should be treated as synthetic for experimentation and educational purposes.
+
+Usage
+
+Run data_mapping_and_loading.py to generate simulated tables and load them into Neon.
+
+Run main.py to train the fraud detection model and evaluate results.
+
+Modify num_customers, num_cards, or num_merchants to scale the dataset.
