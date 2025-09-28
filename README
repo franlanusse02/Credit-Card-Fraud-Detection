@@ -2,14 +2,14 @@ Credit Card Fraud Detection
 
 This project demonstrates a fraud detection pipeline using credit card transactions. It combines real transaction patterns with simulated customer, card, and merchant data to create a realistic dataset suitable for machine learning experiments.
 
+Source dataset: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+
 Project Structure
 Credit Card Fraud Detection/
 ├── modules/
 │   ├── main.py                   # Fraud detection pipeline
 │   ├── data_mapping_and_loading.py  # Generate and map simulated data
 │   └── exploration.py            # Optional EDA scripts
-├── downloads/
-│   └── creditcard.csv            # Original transaction dataset
 ├── README.md
 └── requirements.txt
 
