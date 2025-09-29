@@ -112,3 +112,18 @@ Run data_mapping_and_loading.py to generate simulated tables and load them into 
 Run main.py to train the fraud detection model and evaluate results.
 
 Modify num_customers, num_cards, or num_merchants to scale the dataset.
+
+Model Performance
+
+Confusion Matrix (Actual vs Predicted) can be found as a png
+
+TN (True Negatives): 82151  
+FP (False Positives): 3144  
+FN (False Negatives): 18  
+TP (True Positives): 130
+
+Key insights:
+- The model correctly identifies the majority of legitimate transactions (high TN).
+- It detects most fraudulent transactions (TP = 130), with relatively few missed cases (FN = 18).
+- There are some false positives, which is expected in imbalanced fraud detection problems.
+- Overall, the model achieves strong recall on the fraud class, which is crucial in this context.
