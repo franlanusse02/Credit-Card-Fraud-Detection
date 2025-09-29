@@ -29,7 +29,7 @@ Liberties Taken
 
 To make the dataset usable for modeling:
 
-Customer and merchant information is simulated: Names, countries, and regions are randomly assigned to provide realistic associations.
+Customer and merchant information is simulated: Countries, and regions are randomly assigned to provide realistic associations.
 
 Card ownership is randomly assigned: Customers can have 1–3 cards.
 
