@@ -14,7 +14,7 @@ import seaborn as sns
 # ----------------------------
 # Connect to Neon database
 # ----------------------------
-connection_string = "postgresql://neondb_owner:npg_NJo63LxhiQFE@ep-square-unit-ac9wcwpb-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+connection_string = "postgre_connection_string" # replace with connection string
 engine = create_engine(connection_string)
 
 # ----------------------------
